@@ -15,6 +15,8 @@ namespace WfpXmlHelper
 
         public void Load(string xml)
         {
+            xml = xml.Replace("&&", "&amp;&amp;"); // Ampersands in filter conditions are not escaped in WFP XML output...
+                                                   // Well, I believe no one expected them to be there in the first place.
             var xDoc = new XmlDocument();
             xDoc.LoadXml(xml);
 

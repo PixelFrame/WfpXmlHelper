@@ -14,6 +14,7 @@ namespace WfpXmlHelper
         public void Load(string xml)
         {
             xml = xml.Remove(xml.LastIndexOf("</wfpstate>") + 11);
+            xml = xml.Replace("&&", "&amp;&amp;");
             var xDoc = new XmlDocument();
             xDoc.LoadXml(xml);
 
