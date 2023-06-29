@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Text;
+using System.Xml;
 
 namespace WfpXmlHelper
 {
@@ -71,7 +72,7 @@ namespace WfpXmlHelper
                 "FWP_FLOAT" => xNode.TextValue("float32"),
                 "FWP_DOUBLE" => xNode.TextValue("double64"),
                 "FWP_BYTE_ARRAY16_TYPE" => xNode.TextValue("byteArray16"),
-                "FWP_BYTE_BLOB_TYPE" => Convert.FromHexString(xNode.TextValue("byteBlob/data")) + " (" + xNode.TextValue("byteBlob/data") + ")",
+                "FWP_BYTE_BLOB_TYPE" => Encoding.Unicode.GetString(Convert.FromHexString(xNode.TextValue("byteBlob/data"))) + " (" + xNode.TextValue("byteBlob/data") + ")",
                 "FWP_SID" => xNode.TextValue("sid"),
                 "FWP_SECURITY_DESCRIPTOR_TYPE" => xNode.TextValue("sd"),
                 "FWP_TOKEN_INFORMATION_TYPE" => xNode.TextValue("tokenInformation"),

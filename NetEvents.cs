@@ -15,6 +15,9 @@ namespace WfpXmlHelper
             var xDoc = new XmlDocument();
             xDoc.LoadXml(xml);
 
+            if (NetEventsClassifyDrop.Count > 0)
+                NetEventsClassifyDrop.Clear();
+
             var netEventNodes = xDoc.SelectNodes("/netEvents/item");
             if (netEventNodes != null)
             {

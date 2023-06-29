@@ -18,6 +18,11 @@ namespace WfpXmlHelper
             var xDoc = new XmlDocument();
             xDoc.LoadXml(xml);
 
+            if(Filters.Count > 0)
+                Filters.Clear();
+            if(Providers.Count > 0)
+                Providers.Clear();
+
             var filterNodes = xDoc.SelectNodes("/wfpstate/layers//filters/item");
             if (filterNodes != null)
             {

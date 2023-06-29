@@ -20,6 +20,15 @@ namespace WfpXmlHelper
             var xDoc = new XmlDocument();
             xDoc.LoadXml(xml);
 
+            if (NetEventsClassifyDrop.Count > 0)
+                NetEventsClassifyDrop.Clear();
+            if (InitialFilters.Count > 0)
+                InitialFilters.Clear();
+            if (AddedFilters.Count > 0)
+                AddedFilters.Clear();
+            if (Providers.Count > 0)
+                Providers.Clear();
+
             var netEventNodes = xDoc.SelectNodes("/wfpdiag/events/netEvent");
             if (netEventNodes != null)
             {
