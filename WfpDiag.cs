@@ -52,7 +52,7 @@ namespace WfpXmlHelper
                 foreach (XmlNode initFilterNode in initFilterNodes)
                 {
                     CurrentCount++;
-                    InitialFilters.Add(new Filter(initFilterNode));
+                    InitialFilters.Add(new Filter(initFilterNode, xDoc));
                 }
             }
 
@@ -65,7 +65,7 @@ namespace WfpXmlHelper
                 foreach (XmlNode addedFilterNode in addedFilterNodes)
                 {
                     CurrentCount++;
-                    AddedFilters.Add(new Filter(addedFilterNode));
+                    AddedFilters.Add(new Filter(addedFilterNode, xDoc));
                 }
             }
 

@@ -14,10 +14,10 @@ namespace WfpXmlHelper
         public string Weight;
         public string EffectiveWeight;
         public string Action;
-        public string CalloutKey;
+        public Callout? Callout;
         public List<string> Condition = new();
 
-        public Filter(XmlNode xNode)
+        public Filter(XmlNode xNode, XmlDocument xDoc)
         {
             Id = xNode.TextValue("filterId");
             Name = xNode.TextValue("displayData/name");
@@ -35,7 +35,12 @@ namespace WfpXmlHelper
             Weight = xNode.TextValue("weight/uint8");
             EffectiveWeight = xNode.TextValue("effectiveWeight/uint64");
             Action = xNode.TextValue("action/type");
-            CalloutKey = xNode.TextValue("action/filterType");
+            var calloutKey = xNode.TextValue("action/filterType") + xNode.TextValue("action/calloutKey");
+            if (!string.IsNullOrEmpty(calloutKey))
+            {
+                var calloutNode = xDoc.SelectSingleNode($"//callouts/item/calloutKey[text()=\"{calloutKey}\"]/..");
+                Callout = new Callout(calloutNode);
+            }
             var conditionNodes = xNode.SelectNodes("filterCondition/item");
             if (conditionNodes != null)
             {

@@ -32,7 +32,7 @@ namespace WfpXmlHelper
                 foreach (XmlNode filterNode in filterNodes)
                 {
                     CurrentCount++;
-                    Filters.Add(new Filter(filterNode));
+                    Filters.Add(new Filter(filterNode, xDoc));
                 }
             }
 
