@@ -15,7 +15,7 @@ namespace WfpXmlHelper
         public string EffectiveWeight;
         public string Action;
         public Callout? Callout;
-        public List<string> Condition = new();
+        public List<(string, string, string)> Condition = new();
 
         public Filter(XmlNode xNode, XmlDocument xDoc)
         {
@@ -51,13 +51,13 @@ namespace WfpXmlHelper
             }
         }
 
-        private static string ProcessCondition(XmlNode xNode)
+        private static (string, string, string) ProcessCondition(XmlNode xNode)
         {
             var key = xNode.TextValue("fieldKey")[15..];
             var match = Statics.MatchTypeDic[xNode.TextValue("matchType")];
             var value = ProcessConditionValue(xNode.SelectSingleNode("conditionValue")!);
 
-            return $"{key} {match} {value}";
+            return (key, match, value);
         }
 
         private static string ProcessConditionValue(XmlNode? xNode)
