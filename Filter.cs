@@ -84,8 +84,8 @@ namespace WfpXmlHelper
                 "FWP_TOKEN_ACCESS_INFORMATION_TYPE" => xNode.TextValue("tokenAccessInformation"),
                 "FWP_UNICODE_STRING_TYPE" => xNode.TextValue("unicodeString"),
                 "FWP_BYTE_ARRAY6_TYPE" => xNode.TextValue("byteArray6"),
-                "FWP_V4_ADDR_MASK" => xNode.TextValue("v4AddrMask"),
-                "FWP_V6_ADDR_MASK" => xNode.TextValue("v6AddrMask"),
+                "FWP_V4_ADDR_MASK" => xNode.TextValue("v4AddrMask/addr") + '/' + xNode.TextValue("v4AddrMask/mask"),
+                "FWP_V6_ADDR_MASK" => xNode.TextValue("v6AddrMask/addr") + '/' + xNode.TextValue("v6AddrMask/mask"),
                 "FWP_RANGE_TYPE" => ProcessConditionValue(xNode.SelectSingleNode("rangeValue/valueLow")) + " - " + ProcessConditionValue(xNode.SelectSingleNode("rangeValue/valueHigh")),
                 _ => string.Empty,
             };
